@@ -1,0 +1,3 @@
+123456,João Silva,Engenharia,CONCLUÍDO
+789012,Maria Souza,Engenharia,CURSANDO
+345678,Carlos Lima,Engenharia,CONCLUÍDO

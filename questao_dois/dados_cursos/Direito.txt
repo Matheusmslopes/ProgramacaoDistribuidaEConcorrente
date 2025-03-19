@@ -1,0 +1,3 @@
+234567,Diego Almeida,Direito,CONCLUÍDO
+345678,Juliana Costa,Direito,CURSANDO
+456789,Rafael Tavares,Direito,CONCLUÍDO

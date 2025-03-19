@@ -1,0 +1,3 @@
+567890,Ana Pereira,Computação,CURSANDO
+678901,Bruno Rocha,Computação,CONCLUÍDO
+789123,Clara Mendes,Computação,CURSANDO
