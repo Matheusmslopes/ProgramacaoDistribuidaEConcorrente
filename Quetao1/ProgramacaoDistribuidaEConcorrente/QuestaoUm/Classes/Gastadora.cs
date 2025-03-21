@@ -1,20 +1,23 @@
-public class Gastadora
+namespace QuestaoUm.Classes
 {
-    private readonly Conta conta;
-    private int qntdSaque = 0;
-    private double totalSacado = 0;
-
-    public Gastadora(Conta conta)
+    public class Gastadora
     {
-        this.conta = conta;
-    }
+        private readonly Conta conta;
+        private int qntdSaque = 0;
+        private double totalSacado = 0;
 
-    public void Run()
-    {
-        while (true)
+        public Gastadora(Conta conta)
         {
-            conta.Sacar(10, "Gastadora", ref qntdSaque, ref totalSacado);
-            Thread.Sleep(3000);
+            this.conta = conta;
+        }
+
+        public async Task Run()
+        {
+            while (true)
+            {
+                conta.Sacar(10, this.GetType().Name, ref qntdSaque, ref totalSacado);
+                await Task.Delay(3000);
+            }
         }
     }
 }
