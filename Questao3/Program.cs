@@ -1,52 +1,50 @@
 using System;
 using System.Threading.Tasks;
-using System.Threading;
 
 class Program
 {
-    static void Main()
-    {
-      Pedido pedido1 = new Pedido(1);
-      
-      pedido1.PedidoPronto();
-    }
-}
+    private static int pedidoNumero = 0; 
 
-public class Pedido
-{
-  public int numeroPedido { get; private set; }
-  
-   
-    public Pedido(int numero)
+    static void Main(string[] args)
     {
-        if (numero <= 0)
+        Console.WriteLine("Pedidos chegando");
+
+        for (int i = 0; i < 5; i++)
         {
-            throw new ArgumentException("Número de pedido inválido");
+            FazerPedido().GetAwaiter().GetResult();
         }
-        numeroPedido = numero;
+
+        Console.WriteLine("\nTodos os pedidos foram finalizados!");
+    }
+
+    static async Task FazerPedido()
+    {
+        int numeroPedido = ++pedidoNumero; 
+        Console.WriteLine($"\nPedido {numeroPedido} recebido! Preparando o seu combo");
+        
+        Task<string> pipocaTask = GetPipoca(numeroPedido);
+        Task<string> refrigeranteTask = GetRefrigerante(numeroPedido);
+        
+        await Task.WhenAll(pipocaTask, refrigeranteTask);
+
+       
+
+        
+    }
+
+   
+    static async Task<string> GetPipoca(int pedido)
+    {
        
     }
-  
-  
-  public bool getPipoca(){
-      Console.WriteLine("Pipoca Pronta");
-      return true;
-  }
-  
-  public bool getRefri(){
-      Console.WriteLine($"Refri do pedido {numeroPedido} Pronto");
-      return true;
-  }
-  
-  public string PedidoPronto(){
-      if (getRefri() && getPipoca()){
-          Console.WriteLine($"Pedido {numeroPedido} Pronto");
-          return "Pedido pronto"; 
-      }
-      else{
-          return "Pedido não finalizado";
-      }
+
+    static async Task<string> GetRefrigerante(int pedido)
+    {
+        
+    }
+
+    static string LanchePronto(int pedido, string pipoca, string refrigerante)
+    {
+        return $"{pipoca} e {refrigerante}. Aproveite!\n Pedido {pedido} finalizado.";
     }
 }
-
-    
