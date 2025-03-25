@@ -26,21 +26,24 @@ class Program
         Task<string> refrigeranteTask = GetRefrigerante(numeroPedido);
         
         await Task.WhenAll(pipocaTask, refrigeranteTask);
-
-       
-
+        
+        string pipoca = await pipocaTask;
+        string refrigerante = await refrigeranteTask;
+        Console.WriteLine(LanchePronto(numeroPedido, pipoca, refrigerante));
         
     }
 
    
     static async Task<string> GetPipoca(int pedido)
     {
-       
+       await Task.Delay(2000);
+       return $"Pipoca do pedido {pedido} pronta";
     }
 
     static async Task<string> GetRefrigerante(int pedido)
     {
-        
+       await Task.Delay(1000);
+       return $"Refri do pedido {pedido} pronto!";
     }
 
     static string LanchePronto(int pedido, string pipoca, string refrigerante)
