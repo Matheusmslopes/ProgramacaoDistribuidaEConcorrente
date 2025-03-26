@@ -1,7 +1,7 @@
 ﻿using QuestaoUm.Classes;
 
 // Instanciando a conta
-Conta conta1 = new(1, "João", 50);
+Conta conta1 = new(1, "João", 1000);
 
 // Instanciando as threads
 Thread gastadora = new Thread(() => new Gastadora(conta1).Run().Wait());
